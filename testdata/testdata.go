@@ -5,6 +5,8 @@ func Hoge() {
 		if true {
 
 		}
+	} else if false {
+
 	} else {
 
 	}
@@ -17,12 +19,25 @@ func Hoge() {
 	}
 }
 
+func Piyo() {
+	for {
+		if true {
+
+		} else {
+		}
+	}
+}
+
 type Fuga struct {
 }
 
 func (f *Fuga) F() {
 	if true {
 		if true {
+
+		} else if false {
+
+		} else {
 
 		}
 	} else {

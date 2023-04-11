@@ -101,13 +101,17 @@ func parseFunc(f *ast.FuncDecl) int64 {
 func calculate(stmts []ast.Stmt, cnt int64) int64 {
 	for _, stmt := range stmts {
 		switch s := stmt.(type) {
+		case *ast.ForStmt:
+			cnt = calculate(s.Body.List, cnt)
 		case *ast.IfStmt:
 			if s.Else != nil {
-				switch s.Else.(type) {
+				cnt++
+				switch el := s.Else.(type) {
 				case *ast.IfStmt:
-					cnt++
+					cnt = calculate(el.Body.List, cnt)
 				}
 			}
+
 			if s.Init == nil && s.Cond != nil {
 				cnt++
 			}
