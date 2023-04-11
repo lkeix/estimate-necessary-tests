@@ -112,7 +112,7 @@ func calculate(stmts []ast.Stmt, cnt int64) int64 {
 				}
 			}
 
-			if s.Init == nil && s.Cond != nil {
+			if s.Cond != nil {
 				cnt++
 			}
 			cnt = calculate(s.Body.List, cnt)
