@@ -16,7 +16,7 @@ func TestVCalculator(t *testing.T) {
 	loader.Load()
 	calculator := NewCalculator()
 
-	for _, ast := range loader.asts {
+	for _, ast := range loader.Asts {
 		calculator.Calculate(ast)
 	}
 

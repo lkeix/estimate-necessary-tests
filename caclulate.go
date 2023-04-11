@@ -115,7 +115,7 @@ func calculate(stmts []ast.Stmt, cnt int64) int64 {
 		case *ast.SwitchStmt:
 			cnt = calculate(s.Body.List, cnt)
 		case *ast.CaseClause:
-			cnt++
+			cnt = calculate(s.Body, cnt+1)
 		}
 	}
 	return cnt
