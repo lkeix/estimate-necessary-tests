@@ -40,10 +40,10 @@ func NewASTLoader(path string, includeTest bool) *ASTLoader {
 	}
 }
 
-func (a *ASTLoader) Load() error {
+func (a *ASTLoader) Load(parseMode parser.Mode) error {
 	for _, f := range a.files {
 		fset := token.NewFileSet()
-		node, err := parser.ParseFile(fset, f, nil, 0)
+		node, err := parser.ParseFile(fset, f, nil, parseMode)
 		if err != nil {
 			return err
 		}

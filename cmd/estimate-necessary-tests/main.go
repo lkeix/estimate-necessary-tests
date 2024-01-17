@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"go/parser"
 
 	estimatenecessarytests "github.com/lkeix/estimate-necessary-tests"
 )
@@ -13,7 +14,7 @@ func main() {
 	flag.Parse()
 
 	loader := estimatenecessarytests.NewASTLoader(path, false)
-	loader.Load()
+	loader.Load(parser.ParseComments)
 
 	calculator := estimatenecessarytests.NewCalculator()
 	for _, ast := range loader.Asts {
