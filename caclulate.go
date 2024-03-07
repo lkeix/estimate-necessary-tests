@@ -112,6 +112,10 @@ func calculate(stmts []ast.Stmt, cnt int64) int64 {
 				}
 			}
 
+			if _, ok := s.Init.(*ast.AssignStmt); ok {
+				cnt++
+			}
+
 			if s.Cond != nil {
 				cnt++
 			}
